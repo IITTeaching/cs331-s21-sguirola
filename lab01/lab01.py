@@ -22,6 +22,11 @@ def captured_output():
 
 # implement this function
 def is_perfect(n):
+    sum = 0
+    for x in range(1,n):
+        if n % x == 0:
+            sum += x
+    return sum == n
     pass
 
 # (3 points)
@@ -40,6 +45,11 @@ def test1():
 
 # implement this function
 def multiples_of_3_and_5(n):
+    sum = 0
+    for i in range(1,n): 
+        if(i%3 == 0 or i % 5 == 0):
+            sum += i
+    return sum
     pass
 
 # (3 points)
@@ -53,6 +63,13 @@ def test2():
 # EXERCISE 3
 #################################################################################
 def integer_right_triangles(p):
+    ans = 0
+    for a in range (1, p):
+        for b in range (1, p):
+            for c in range (1, p):
+                if (a**2 + b**2 == c**2) and (a + b + c == p) and (a<=b) and (b<c):
+                    ans+=1       
+    return ans
     pass
 
 def test3():
@@ -67,8 +84,22 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
-    pass
-
+    maxchars=len(chars)*2-1
+    
+    def ques(a,b):
+        a="".join(reversed(a))[:b]
+        s=a+"".join(reversed(a))[1:]
+        return s
+    maxlen= len('.'.join(ques(chars,len(chars))))
+    for i in range(1,int(maxchars/2+1)):
+        c=ques(chars,i)
+        d='.'.join(c).center(maxlen,'.')
+        print(d)
+    for i in range(int(maxchars/2+1),0,-1):
+        c=ques(chars,i)
+        d=".".join(c).center(maxlen,".")
+        print(d)
+        
 def test4():
     tc = unittest.TestCase()
     with captured_output() as (out,err):
@@ -151,6 +182,7 @@ def main():
     test1()
     test2()
     test3()
+    
     test4()
 
 if __name__ == '__main__':
