@@ -9,9 +9,16 @@ S = TypeVar('S')
 # EXERCISE 1
 #################################################################################
 def mysort(lst: List[T], compare: Callable[[T, T], int]) -> List[T]:
+    for i in range[len(lst-1)]:
+        if(compare(lst[i-1], lst [i]) = 1 ):
+            lst[i-1] , lst[i] = lst[i] , lst[i-1]
+        else:
+            break
+    return lst[]
+            
+        
     """
     This method should sort input list lst of elements of some type T.
-
     Elements of the list are compared using function compare that takes two
     elements of type T as input and returns -1 if the left is smaller than the
     right element, 1 if the left is larger than the right, and 0 if the two
@@ -20,9 +27,25 @@ def mysort(lst: List[T], compare: Callable[[T, T], int]) -> List[T]:
     pass
 
 def mybinsearch(lst: List[T], elem: S, compare: Callable[[T, S], int]) -> int:
+    midpoint = 0
+    start = 0
+    index = 0 
+    endpoint = len(lst)
+    while(start<=endpoint):
+        index+=1
+        midpoint = (start + endpoint) //2
+        
+        if S== lst[midpoint]:
+            return midpoint
+        if S < lst[midpoint]:
+            endpoint = midpoint -1
+        else:
+            start = mid + 1
+    return -1
+        
+    
     """
     This method search for elem in lst using binary search.
-
     The elements of lst are compared using function compare. Returns the
     position of the first (leftmost) match for elem in lst. If elem does not
     exist in lst, then return -1.
@@ -48,8 +71,7 @@ def test1():
     test1_4()
     test1_5()
 
-# 6 Points
-def test1_1():
+# 6 Points`
     """Sort ints."""
     print("\t-sort ints")
     tc = unittest.TestCase()
@@ -108,6 +130,8 @@ def test1_5():
 class PrefixSearcher():
 
     def __init__(self, document, k):
+        self.documnent = document
+        self.k = k
         """
         Initializes a prefix searcher using a document and a maximum
         search string length k.
@@ -115,9 +139,25 @@ class PrefixSearcher():
         pass
 
     def search(self, q):
+        cycles = 0
+        stringHolder = ""
+        newArray= []
+        for i in range(len(document)-1):
+            if cycles == 0:
+                newArray.apphend(document[0:k])
+                cycles ++
+            else:
+                newArray.appehnd(document[k:k+k])
+                k+=k
+        
+        if len.(q)>k:
+            print("q cannont be longer than n")
+        else
+            return(true)
+            
+        
         """
         Return true if the document contains search string q (of
-
         length up to n). If q is longer than n, then raise an
         Exception.
         """
